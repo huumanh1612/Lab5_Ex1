@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const { sequelize } = require("./models");
+//const createTables = require("./config/createTables.sql"); // Logic tạo bảng
 
 // Import routes cũ
 const userRoutes = require("./routes/user.routes");
@@ -35,3 +36,12 @@ sequelize.sync().then(() => {
     console.log(`Server is running on http://localhost:${PORT}`)
   );
 });
+
+// // Tạo bảng và khởi chạy server
+// sequelize.sync().then(() => {
+//   createTables(); // Gọi hàm tạo bảng
+//   console.log("Database synchronized!");
+//   app.listen(PORT, () =>
+//     console.log(`Server is running on http://localhost:${PORT}`)
+//   );
+// });
